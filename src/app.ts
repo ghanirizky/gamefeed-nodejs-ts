@@ -1,7 +1,7 @@
 import "dotenv/config";
 import { configs } from "./config";
 import { Client, Intents } from "discord.js";
-import { prune, help } from "./controller/command";
+import { prune, help, pray } from "./controller/command";
 import { shortenLink } from "./controller/bitly";
 import { convert } from "./controller/converter";
 import { changeCurr, changeLimit, getList } from "./controller/crypto";
@@ -37,6 +37,8 @@ client.on("messageCreate", async (msg: any) => {
   if (msg.content.startsWith("g!cvt")) convert(msg);
 
   if (msg.content.startsWith("g!help")) help(msg);
+
+  if (msg.content.startsWith("g!pray")) pray(msg);
 });
 
 client.login(configs.DISCORD_BOT_TOKEN);

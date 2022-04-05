@@ -1,4 +1,5 @@
 import { EmbedMessage } from "../../embeds";
+import { prayZone } from "../../services/";
 
 export const prune = function (msg: any, client: any): void {
   const content: number = msg.content.split(" ")[1];
@@ -26,4 +27,17 @@ export const help = function (msg: any): void {
   return msg.reply({
     embeds: [commandFind.embed],
   });
+};
+
+export const pray = async function (msg: any): Promise<void> {
+  try {
+    const response = await prayZone();
+    const data = response.data.results.datetime;
+    const embedData = EmbedMessage.prayTimeEmbed(data[0].times);
+    return msg.reply({
+      embeds: [embedData],
+    });
+  } catch (error) {
+    console.log("Pray data error");
+  }
 };

@@ -30,7 +30,7 @@ export const liveCrypto = async function (): Promise<any> {
   const data = await readFile("crypto_list.json");
   const headers = {
     "x-api-key": "29797eeb-8b90-4ca0-9752-5c06e78aaf0d",
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
   };
 
   try {
@@ -42,5 +42,18 @@ export const liveCrypto = async function (): Promise<any> {
     });
   } catch (error) {
     console.log("Crypto List Error: ", error);
+  }
+};
+
+export const prayZone = async function (): Promise<any> {
+  const url = "https://api.pray.zone/v2/times/today.json?city=jakarta";
+
+  try {
+    return await callAPI({
+      url,
+      method: "GET",
+    });
+  } catch (error) {
+    console.log("Pray Zone: ", error);
   }
 };

@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 
-export const callAPI = async ({ url, method, data, headers = {} }: AxiosRequestConfig) => {
+export const callAPI = async ({ url, method, data = {}, headers = {} }: AxiosRequestConfig) => {
   const response = await axios({ url, method, data, headers }).catch(
     (err) => err.response
   );
