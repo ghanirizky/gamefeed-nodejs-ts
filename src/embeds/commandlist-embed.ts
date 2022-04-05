@@ -71,4 +71,20 @@ export const commandList = [
       timestamp: new Date(),
     },
   },
+  {
+    key: "pray",
+    embed: {
+      title: "Pray Time (Jakarta) | g!pray",
+      description:
+        "```\nPray time in jakarta\n```",
+      color: 2481902,
+      fields: [
+        {
+          name: "Format",
+          value: "```\ng!pray\n```",
+        },
+      ],
+      timestamp: new Date(),
+    },
+  },
 ];
