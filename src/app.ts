@@ -14,9 +14,9 @@ const client: any = new Client({
 client.on("ready", async () => {
   console.log(`${client.user.tag} has logged in.`);
   client.user.setActivity("| g!help", { type: "LISTENING" });
-  const channelGame3rb = client.channels.cache.get("960758737197486140");
-  const channelCrypto = client.channels.cache.get("960736175079981096");
-  const channelCrypto2 = client.channels.cache.get("960758670881345536");
+  const channelGame3rb = client.channels.cache.get("881639659577425950");
+  const channelCrypto = client.channels.cache.get("905782025565388840");
+  const channelCrypto2 = client.channels.cache.get("909033029412995112");
 
   setInterval(async () => {
     await game3rbFeed(channelGame3rb);
