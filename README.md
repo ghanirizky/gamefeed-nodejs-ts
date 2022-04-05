@@ -4,7 +4,7 @@ Rewrite of my Gamefeed Discord Bot with TypeScript
 Discord function:
 1. Updated crack game from url feed: www.game3rb.com
 2. Live cryptocurrency data from: https://www.livecoinwatch.com REST API.
-3. Delete "chat" in channel up to 100 chat using g!prune [1_100] command.
+3. Delete "chat" in channel up to 100 chat using g!prune.
 4. Shorten link using bit.ly API | g!shorten
 5. Currency Converter | g!cvt
 
