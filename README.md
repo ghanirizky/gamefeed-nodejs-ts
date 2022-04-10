@@ -7,6 +7,7 @@ Discord function:
 3. Delete "chat" in channel up to 100 chat using g!prune.
 4. Shorten link using bit.ly API | g!shorten
 5. Currency Converter | g!cvt
+6. Pray time (Jakarta) | g!pray
 
 # Invite Link
 https://discord.com/api/oauth2/authorize?client_id=881249227232137236&permissions=17179995136&scope=bot
