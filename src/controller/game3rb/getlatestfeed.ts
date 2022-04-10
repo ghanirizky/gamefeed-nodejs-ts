@@ -22,4 +22,5 @@ export const getLatestFeed = async function (
     }
     return [];
   }
+  return []
 };
