@@ -23,5 +23,11 @@ export const createFile = async function (
 
 export const parseRssToJson = async function (url: string): Promise<any> {
   let parser = new Parser();
-  return await parser.parseURL(url);
+  try {
+    const feed = await parser.parseURL(url);
+    return feed
+  } catch (error) {
+    console.log("Parse RSS [Error]:", error)
+    return []
+  }
 };
