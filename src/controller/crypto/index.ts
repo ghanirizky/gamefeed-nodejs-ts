@@ -34,7 +34,7 @@ export const getList = async function (channel: any): Promise<void> {
   const response = await liveCrypto();
   if (response.error) return console.log("Fetching Crypto Data Error [v]");
   let index = 1;
-  await channel.bulkDelete(100);
+  await channel.bulkDelete(100, true);
   response.data.forEach(async (crypto: any) => {
     const embedData = await EmbedMessage.createEmbedCryptoList(crypto, index++);
     channel.send({ embeds: [embedData] });

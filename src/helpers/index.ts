@@ -25,9 +25,20 @@ export const parseRssToJson = async function (url: string): Promise<any> {
   let parser = new Parser();
   try {
     const feed = await parser.parseURL(url);
-    return feed
+    return feed;
   } catch (error) {
-    console.log("Parse RSS [Error]:", error)
-    return []
+    console.log("Parse RSS [Error]:", error);
+    return [];
   }
+};
+
+export const commandsData = function (): any {
+  const commandFiles = fs
+    .readdirSync("./src/commands")
+    .filter((file: any) => file.endsWith(".ts"));
+
+  return commandFiles.map((file) => {
+    const command = require(`../commands/${file}`);
+    return command?.default;
+  });
 };

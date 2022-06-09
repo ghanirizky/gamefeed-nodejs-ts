@@ -43,6 +43,7 @@ export const liveCrypto = async function (): Promise<any> {
   } catch (error) {
     console.log("Crypto List Error: ", error);
   }
+  
 };
 
 export const prayZone = async function (): Promise<any> {

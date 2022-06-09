@@ -1,14 +1,27 @@
 import { EmbedMessage } from "../../embeds";
 import { prayZone } from "../../services/";
 
-export const prune = function (msg: any, client: any): void {
-  const content: number = msg.content.split(" ")[1];
+export const prune = function (
+  msg: any,
+  client: any,
+  isSlash = false,
+  interaction? : any
+): void {
+  let content: number = msg;
+  if (!isSlash) content = msg.content.split(" ")[1];
+
   if (!isNaN(content)) {
     if (content > 100 || content < 0)
       return msg.reply("The valid number to delete message is [1 - 100]");
 
-    const tempChannel = client.channels.cache.get(msg.channelId);
-    tempChannel.bulkDelete(content);
+    if (!isSlash) {
+      const tempChannel = client.channels.cache.get(msg.channelId);
+      tempChannel.bulkDelete(content, true);
+    } else {
+      const tempChannel = client.channels.cache.get(interaction.channelId);
+      tempChannel.bulkDelete(content, true);
+      interaction.reply({content: "Message Deleted", ephemeral : true })
+    }
     return;
   }
 };
