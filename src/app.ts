@@ -23,7 +23,7 @@ client.on("ready", async () => {
   const channelGame3rb = client.channels.cache.get("881639659577425950");
   const channelCrypto = client.channels.cache.get("905782025565388840");
   const channelCrypto2 = client.channels.cache.get("909033029412995112");
-  const testGuildId = "880697006224470016";
+  const testGuildId = ["908632787874091038", "285891020720308234"];
 
   setInterval(async () => {
     await game3rbFeed(channelGame3rb);
