@@ -23,8 +23,8 @@ client.on("ready", async () => {
   const channelGame3rb = client.channels.cache.get("881639659577425950");
   const channelCrypto = client.channels.cache.get("905782025565388840");
   const channelCrypto2 = client.channels.cache.get("909033029412995112");
-  const testGuildId = "908632787874091038"
-
+  // const testGuildId = "908632787874091038"
+  await getList(channelCrypto2);
   setInterval(async () => {
     await game3rbFeed(channelGame3rb);
     await getList(channelCrypto);
@@ -59,7 +59,7 @@ client.on("messageCreate", async (msg: any) => {
 //     await interaction.reply("Bot is ready");
 
 //   if (interaction.commandName === "prune") prune(interaction.options.getNumber('num'), client, true, interaction)
-  
+
 // });
 
 client.login(configs.DISCORD_BOT_TOKEN);
