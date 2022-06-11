@@ -27,7 +27,7 @@ export const prune = function (props: PruneCommandsProps): void {
 export const help = function (props: CommandsProps): void {
   const { isSlash, msg, interaction } = props;
 
-  if (!isSlash) {
+  if (isSlash) {
     const subCommand = interaction.options.getString("command");
     if (!subCommand)
       return interaction.reply({
