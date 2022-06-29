@@ -1,6 +1,7 @@
 import { EmbedMessage } from "../../embeds";
 import { prayZone } from "../../services/";
 import { CommandsProps, PruneCommandsProps } from "./types";
+import { constants } from "../../common/constant"
 
 export const prune = function (props: PruneCommandsProps): void {
   const { isSlash, msg, interaction, client } = props;
@@ -70,3 +71,13 @@ export const pray = async function (msg: any): Promise<void> {
     console.log("Pray data error");
   }
 };
+
+export const absen = async (msg: any) : Promise<void> => {
+
+  
+  const role = msg.guild.roles.cache.find((role : any) => role.id === constants.ROLE_ABSEN_ID)
+  if(!role) return msg.reply("Role not found!")
+  msg.member.roles.add(role)
+  return msg.reply("Assigned a new role")
+  
+}

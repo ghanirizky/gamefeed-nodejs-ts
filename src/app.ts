@@ -1,7 +1,7 @@
 import "dotenv/config";
 import { configs } from "./config";
 import { Client, Intents } from "discord.js";
-import { prune, help, pray } from "./controller/command";
+import { prune, help, pray, absen } from "./controller/command";
 import { shortenLink } from "./controller/bitly";
 import { convert } from "./controller/converter";
 import { changeCurr, changeLimit, getList } from "./controller/crypto";
@@ -24,10 +24,7 @@ client.on("ready", async () => {
   const channelCrypto = client.channels.cache.get("905782025565388840");
   const channelCrypto2 = client.channels.cache.get("909033029412995112");
   const testGuildId = ["908632787874091038", "285891020720308234"];
-  // const testGuildId = ["880697006224470016"];
-
-  await getList(channelCrypto);
-  await getList(channelCrypto2);
+  // const testGuildId = ["880697006224470016"]; // TEST GUILD
 
   setInterval(async () => {
     await getList(channelCrypto);
@@ -57,6 +54,8 @@ client.on("messageCreate", async (msg: any) => {
   if (msg.content.startsWith("g!help")) help({ isSlash: false, msg: msg });
 
   if (msg.content.startsWith("g!pray")) pray(msg);
+
+  if (msg.content.startsWith("g!absen")) absen(msg);
 });
 
 client.on("interactionCreate", async (interaction: CommandInteraction) => {

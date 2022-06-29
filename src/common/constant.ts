@@ -10,4 +10,5 @@ export const constants = {
   FILE_FREEGAMES: "last_update_fgames.json",
   URL_CRYPTO: "https://www.livecoinwatch.com",
   FILE_CRYPTO_LIST: "crypto_list.json",
+  ROLE_ABSEN_ID : "988286950471528448"
 };
