@@ -87,4 +87,20 @@ export const commandList = [
       timestamp: new Date(),
     },
   },
+  {
+    key: "qr",
+    embed: {
+      title: "Generate QR Code | g!pray",
+      description:
+        "```\nGenerate QR code (Accept any form of text)\n```",
+      color: 2481902,
+      fields: [
+        {
+          name: "Format",
+          value: "```\ng!qr [TEXT]```",
+        },
+      ],
+      timestamp: new Date(),
+    },
+  },
 ];

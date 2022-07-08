@@ -5,6 +5,6 @@ export default {
     .setName("help")
     .setDescription("List of command")
     .addStringOption((option: any) =>
-      option.setName("command").setDescription("cvt | shorten | prune | pray")
+      option.setName("command").setDescription("cvt | shorten | prune | pray | qr")
     ),
 };
