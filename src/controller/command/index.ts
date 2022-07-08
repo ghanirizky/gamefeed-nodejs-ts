@@ -1,7 +1,10 @@
 import { EmbedMessage } from "../../embeds";
 import { prayZone } from "../../services/";
 import { CommandsProps, PruneCommandsProps } from "./types";
-import { constants } from "../../common/constant"
+import { constants } from "../../common/constant";
+import { configs } from "../../config";
+import {MessageEmbed, MessageAttachment} from 'discord.js'
+const QRCode = require("qrcode");
 
 export const prune = function (props: PruneCommandsProps): void {
   const { isSlash, msg, interaction, client } = props;
@@ -72,12 +75,32 @@ export const pray = async function (msg: any): Promise<void> {
   }
 };
 
-export const absen = async (msg: any) : Promise<void> => {
+export const absen = async (msg: any): Promise<void> => {
+  const role = msg.guild.roles.cache.find(
+    (role: any) => role.id === constants.ROLE_ABSEN_ID
+  );
+  if (!role) return msg.reply("Role not found!");
+  msg.member.roles.add(role);
+  return msg.reply("Assigned a new role");
+};
 
-  
-  const role = msg.guild.roles.cache.find((role : any) => role.id === constants.ROLE_ABSEN_ID)
-  if(!role) return msg.reply("Role not found!")
-  msg.member.roles.add(role)
-  return msg.reply("Assigned a new role")
-  
-}
+export const qr = async (msg: any): Promise<void> => {
+  let data: string = msg.content.split(" ")[1];
+  if (typeof data != "string") data = JSON.stringify(data);
+  QRCode.toFile(
+    `${configs.PATH_FILE}/${configs.QR_FILE_NAME}`,
+    data,
+    {
+      width: 300,
+      height: 300,
+    },
+    (err: any) => {
+      if (err) throw err;
+      const qrFile = new MessageAttachment(`${configs.PATH_FILE}/${configs.QR_FILE_NAME}`)
+
+      return msg.reply({
+        files: [qrFile]
+      });
+    }
+  );
+};

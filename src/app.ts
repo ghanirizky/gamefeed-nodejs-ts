@@ -1,7 +1,7 @@
 import "dotenv/config";
 import { configs } from "./config";
 import { Client, Intents } from "discord.js";
-import { prune, help, pray, absen } from "./controller/command";
+import { prune, help, pray, absen, qr } from "./controller/command";
 import { shortenLink } from "./controller/bitly";
 import { convert } from "./controller/converter";
 import { changeCurr, changeLimit, getList } from "./controller/crypto";
@@ -56,6 +56,9 @@ client.on("messageCreate", async (msg: any) => {
   if (msg.content.startsWith("g!pray")) pray(msg);
 
   if (msg.content.startsWith("g!absen")) absen(msg);
+
+  if (msg.content.startsWith("g!qr")) qr(msg);
+
 });
 
 client.on("interactionCreate", async (interaction: CommandInteraction) => {
