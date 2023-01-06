@@ -4,7 +4,12 @@ import { CommandsProps, PruneCommandsProps } from "./types";
 import { constants } from "../../common/constant";
 import { configs } from "../../config";
 import {MessageEmbed, MessageAttachment} from 'discord.js'
+import { Configuration, OpenAIApi } from "openai";
 const QRCode = require("qrcode");
+
+const openai = new OpenAIApi(new Configuration({
+  apiKey: configs.OPENAI_API_KEY,
+}));
 
 export const prune = function (props: PruneCommandsProps): void {
   const { isSlash, msg, interaction, client } = props;
@@ -104,3 +109,82 @@ export const qr = async (msg: any): Promise<void> => {
     }
   );
 };
+
+export const chatGpt = async (msg: any) : Promise<void> => {
+  const content: Array<any> = msg.content.split(' ');
+  content.shift()
+
+  try {
+    const completion = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: `Q:${content.join(" ")}`,
+      temperature: 0,
+      max_tokens : 100,
+      top_p : 1,
+      frequency_penalty : 0.0,
+      presence_penalty : 0.0,
+    });
+  
+    msg.reply(completion.data.choices[0].text ?? 'error');
+  } catch (error) {
+    msg.reply("Bad Request!!  ")
+  }
+  
+}
+
+export const findImg = async (msg: any) : Promise<void> => {
+  const content: Array<any> = msg.content.split(' ');
+  content.shift()
+
+  try {
+    const response = await openai.createImage({
+      prompt: content.join(" "),
+      n: 1,
+      size: "1024x1024",
+    });
+    const image_url = response.data.data[0].url;
+    msg.reply(image_url);
+  } catch (error) {
+    msg.reply("Bad Request!!")
+  }
+}
+
+export const translateToIndonesia = async (msg: any) : Promise<void> => {
+  const content: Array<any> = msg.content.split(' ');
+  content.shift()
+
+  try {
+    const response = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: `Translate this into Indonesian: ${content.join(' ')}`,
+      temperature: 0.3,
+      max_tokens: 100,
+      top_p: 1.0,
+      frequency_penalty: 0.0,
+      presence_penalty: 0.0,
+    });
+    msg.reply(response.data.choices[0].text ?? 'error');
+  } catch (error) {
+    msg.reply("Bad Request!!")
+  }
+}
+
+export const tldr = async (msg: any) : Promise<void> => {
+  const content: Array<any> = msg.content.split(' ');
+  content.shift()
+
+  try {
+    const response = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: `${content.join(" ")}\n\nTl;dr`,
+      temperature: 0.7,
+      max_tokens: 60,
+      top_p: 1.0,
+      frequency_penalty: 0.0,
+      presence_penalty: 1,
+    });
+    msg.reply(response.data.choices[0].text ?? 'error');
+  } catch (error) {
+    msg.reply("Bad Request!!")
+  }
+}

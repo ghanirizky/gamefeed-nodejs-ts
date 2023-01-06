@@ -1,7 +1,7 @@
 import "dotenv/config";
 import { configs } from "./config";
 import { Client, Intents } from "discord.js";
-import { prune, help, pray, absen, qr } from "./controller/command";
+import { prune, help, pray, absen, qr, chatGpt, findImg, translateToIndonesia, tldr } from "./controller/command";
 import { shortenLink } from "./controller/bitly";
 import { convert } from "./controller/converter";
 import { changeCurr, changeLimit, getList } from "./controller/crypto";
@@ -23,13 +23,13 @@ client.on("ready", async () => {
   const channelGame3rb = client.channels.cache.get("881639659577425950");
   const channelCrypto = client.channels.cache.get("905782025565388840");
   const channelCrypto2 = client.channels.cache.get("909033029412995112");
-  const testGuildId = ["908632787874091038", "285891020720308234"];
-  // const testGuildId = ["880697006224470016"]; // TEST GUILD
+  // const testGuildId = ["908632787874091038", "285891020720308234"];
+  const testGuildId = ["880697006224470016"]; // TEST GUILD
 
   setInterval(async () => {
-    await getList(channelCrypto);
-    await game3rbFeed(channelGame3rb);
-    await getList(channelCrypto2);
+    // await getList(channelCrypto);
+    // await game3rbFeed(channelGame3rb);
+    // await getList(channelCrypto2);
   }, 600000);
 
   testGuildId.map(async (guildId) => {
@@ -46,7 +46,7 @@ client.on("messageCreate", async (msg: any) => {
 
   if (msg.content.startsWith("g!prune"))
     prune({ client: client, isSlash: false, msg: msg });
-
+  
   if (msg.content.startsWith("g!shorten")) shortenLink(msg);
 
   if (msg.content.startsWith("g!cvt")) convert(msg);
@@ -58,6 +58,14 @@ client.on("messageCreate", async (msg: any) => {
   if (msg.content.startsWith("g!absen")) absen(msg);
 
   if (msg.content.startsWith("g!qr")) qr(msg);
+
+  if (msg.content.startsWith("g!ask")) chatGpt(msg);
+
+  if (msg.content.startsWith("g!image")) findImg(msg);
+
+  if (msg.content.startsWith("g!translate")) translateToIndonesia(msg)
+
+  if (msg.content.startsWith("g!tldr")) tldr(msg)
 
 });
 

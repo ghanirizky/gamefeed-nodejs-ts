@@ -7,5 +7,6 @@ export const configs = {
   PREFIX: process.env.PREFIX,
   BITLY_TOKEN: process.env.BITLY_TOKEN,
   LIVECOIN_KEY: process.env.LIVECOIN_KEY,
-  QR_FILE_NAME : 'qr.png'
+  QR_FILE_NAME : 'qr.png',
+  OPENAI_API_KEY : process.env.OPENAI_API_KEY
 };
