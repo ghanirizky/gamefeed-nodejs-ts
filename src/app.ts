@@ -23,13 +23,13 @@ client.on("ready", async () => {
   const channelGame3rb = client.channels.cache.get("881639659577425950");
   const channelCrypto = client.channels.cache.get("905782025565388840");
   const channelCrypto2 = client.channels.cache.get("909033029412995112");
-  // const testGuildId = ["908632787874091038", "285891020720308234"];
-  const testGuildId = ["880697006224470016"]; // TEST GUILD
+  const testGuildId = ["908632787874091038", "285891020720308234"];
+  // const testGuildId = ["880697006224470016"]; // TEST GUILD
 
   setInterval(async () => {
-    // await getList(channelCrypto);
-    // await game3rbFeed(channelGame3rb);
-    // await getList(channelCrypto2);
+    await getList(channelCrypto);
+    await game3rbFeed(channelGame3rb);
+    await getList(channelCrypto2);
   }, 600000);
 
   testGuildId.map(async (guildId) => {
