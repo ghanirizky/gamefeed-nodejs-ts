@@ -27,7 +27,7 @@ client.on("ready", async () => {
   // const testGuildId = ["880697006224470016"]; // TEST GUILD
 
   setInterval(async () => {
-    console.log("Refresh [v]"):
+    console.log("Refresh [v]");
 //     await getList(channelCrypto);
 //     await game3rbFeed(channelGame3rb);
 //     await getList(channelCrypto2);
