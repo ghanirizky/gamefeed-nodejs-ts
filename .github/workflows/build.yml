@@ -92,5 +92,4 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            "cd /"
-            "./home/ghani/gamefeed/build.sh"
+            "/home/ghani/gamefeed/build.sh"
