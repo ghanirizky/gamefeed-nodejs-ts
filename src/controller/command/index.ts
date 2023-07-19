@@ -47,6 +47,10 @@ export const help = function (props: CommandsProps): void {
       (list) => list.key === subCommand
     );
 
+    if(!commandFind) {
+      return interaction.reply("Command not found!")
+    }
+
     return interaction.reply({
       embeds: [commandFind?.embed],
     });

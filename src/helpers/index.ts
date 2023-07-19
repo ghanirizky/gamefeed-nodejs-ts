@@ -34,8 +34,8 @@ export const parseRssToJson = async function (url: string): Promise<any> {
 
 export const commandsData = function (): any {
   const commandFiles = fs
-    .readdirSync("./src/commands")
-    .filter((file: any) => file.endsWith(".ts"));
+    .readdirSync(`${configs.ROOT_PATH}/commands`)
+    .filter((file: any) => file.endsWith(".ts") || file.endsWith(".js"));
 
   return commandFiles.map((file) => {
     const command = require(`../commands/${file}`);

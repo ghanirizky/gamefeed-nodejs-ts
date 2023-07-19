@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon",
-    "start": "ts-node ./src/app.ts"
+    "dev": "ts-node ./src/app.ts",
+    "start": "ts-node ./src/app.ts",
+    "build": "tsc -p ."
   },
   "engines": {
     "node": ">=16"
