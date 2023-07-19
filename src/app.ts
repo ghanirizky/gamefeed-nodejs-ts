@@ -18,7 +18,7 @@ const client: any = new Client({
 const rest = new REST({ version: "9" }).setToken(configs.DISCORD_BOT_TOKEN);
 
 client.on("ready", async () => {
-  console.log(`${client.user.tag} has logged in.`);
+  console.log(`${client.user.tag} has logged in. [v]`);
   client.user.setActivity("| g!help", { type: "LISTENING" });
   const channelGame3rb = client.channels.cache.get("881639659577425950");
   const channelCrypto = client.channels.cache.get("905782025565388840");
