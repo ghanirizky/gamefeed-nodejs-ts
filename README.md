@@ -1,4 +1,4 @@
-# gamefeed-nodejs-ts
+# gamefeed-nodejs-ts-test
 Rewrite of my Gamefeed Discord Bot with TypeScript
 
 Discord function:
